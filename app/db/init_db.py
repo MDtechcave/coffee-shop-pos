@@ -7,7 +7,8 @@ from app.models import (
     Product,
     Order,
     OrderItem,
-    Payment
+    Payment,
+    Refund
 )
 
 # Create database tables

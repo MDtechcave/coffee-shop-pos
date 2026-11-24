@@ -1,9 +1,12 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Numeric, DateTime
 from sqlalchemy.sql import func
 from app.db.session import Base
+from sqlalchemy.orm import relationship
 
 class Payment(Base):
     __tablename__ = "payments"
+    order = relationship("Order", back_populates="payments")
+    refunds = relationship("Refund", back_populates="payment")
 
     id = Column(Integer, primary_key=True, index=True)
     order_id = Column(Integer, ForeignKey("orders.id"), nullable=False)
